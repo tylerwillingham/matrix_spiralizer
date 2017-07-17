@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe MatrixSpiralizer do
   describe '#read' do
+    it 'throws an exception if the input is invalid' do
+      input = [%w(A b), %w(D C)] # contains lowercase character
+
+      expect { MatrixSpiralizer.new(input).read }.to raise_error(MatrixSpiralizer::InvalidInputError)
+    end
+
     it 'returns a downcased string' do
       input = [%w(A B), %w(D C)]
 

@@ -12,6 +12,8 @@ class MatrixSpiralizer
   end
 
   def read
+    validate_matrix
+
     results.concat handler_cycle.next.call until matrix.empty?
 
     results.join(' ').downcase
