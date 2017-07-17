@@ -65,6 +65,29 @@ results = spiralizer.read
 # => "a b c d h l p o n m i e f g k j"
 ```
 
+### Invalid Inputs
+
+The `#read` method will throw one of two exceptions if your data is invalid.
+
+#### MatrixSpiralizer::InvalidInputError
+
+This error is thrown if your input characters are unsupported. **Only capital letters
+are supported as input.**
+
+#### MatrixSpiralizer::InconsistentLengthError
+
+This error is thrown if your inner arrays are of inconsistent lengths. For example,
+the following input is considered in valid because the second inner array is of
+a different length than its predecessor.
+
+```ruby
+[
+  ['A', 'Z', 'R'],
+  ['F', 'K', 'L', 'M'],
+  ['A', 'Z', 'N']
+]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
