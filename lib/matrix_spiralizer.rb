@@ -1,5 +1,6 @@
 class MatrixSpiralizer
   class InvalidInputError < StandardError; end
+  class InconsistentLengthError < StandardError; end
 
   VALID_CHARACTER_REGEX = /[A-Z]/
 
@@ -17,10 +18,18 @@ class MatrixSpiralizer
   end
 
   def validate_matrix
+    validate_length_consistency
     validate_characters
   end
 
   private
+
+  def validate_length_consistency
+    first_row_length = matrix.first.size
+    return true if matrix.drop(1).all? { |row| row.size == first_row_length }
+
+    raise InconsistentLengthError, 'All inner arrays must be of the same length'
+  end
 
   def validate_characters
     return true if matrix.flatten.all? { |char| char =~ VALID_CHARACTER_REGEX }

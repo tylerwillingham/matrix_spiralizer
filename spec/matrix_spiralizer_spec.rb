@@ -26,6 +26,20 @@ describe MatrixSpiralizer do
   describe '#validate_matrix' do
     subject { spiralizer.validate_matrix }
 
+    context 'given an input with varying inner-array lengths' do
+      let(:spiralizer) do
+        MatrixSpiralizer.new([
+          %w(A B C),
+          %w(D E F G),
+          %w(H I J)
+        ])
+      end
+
+      it 'raises an exception' do
+        expect { subject }.to raise_error(MatrixSpiralizer::InconsistentLengthError)
+      end
+    end
+
     context 'given an input that contains lowercase characters' do
       let(:spiralizer) { MatrixSpiralizer.new([%w(A B), %w(D c)]) }
 
