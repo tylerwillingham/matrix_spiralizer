@@ -3,20 +3,20 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "matrix_spiralizer"
+  spec.name          = 'matrix_spiralizer'
   spec.version       = '0.1.0'
-  spec.authors       = ["Tyler Willingham"]
-  spec.email         = ["tylerwillingham@gmail.com"]
+  spec.authors       = ['Tyler Willingham']
+  spec.email         = ['tylerwillingham@gmail.com']
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.summary       = 'Spirals through a matrix input returning a downcased string.'
+  spec.description   = 'MatrixSpiralizer takes a matrix (or two-dimensional array) input and returns a string determined by spiraling through the contents of the array.'
+  spec.homepage      = 'http://twilling.io'
+  spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = 'http://twilling.io'
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
@@ -29,5 +29,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency 'pry', '~> 0.10.0'
 end
