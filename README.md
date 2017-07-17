@@ -1,8 +1,35 @@
 # MatrixSpiralizer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/matrix_spiralizer`. To experiment with that code, run `bin/console` for an interactive prompt.
+MatrixSpiralizer takes a matrix (or two-dimensional array) input and returns a
+string determined by spiraling through the contents of the array. The spiral pattern
+reads the top row, the right column, the bottom row (in reverse order) and then the left
+column upward. It will also downcase the entire result string.
 
-TODO: Delete this and the text above, and describe your gem
+For example, the following matrix:
+
+```
+A B C D
+E F G H
+I J K L
+M N O P
+```
+
+represented as a 2-dimensional array:
+
+```ruby
+[
+ ['A', 'B', 'C', 'D'],
+ ['E', 'F', 'G', 'H'],
+ ['I', 'J', 'K', 'L'],
+ ['M', 'N', 'O', 'P'],
+]
+```
+
+Will return:
+
+```
+"a b c d h l p o n m i e f g k j"
+```
 
 ## Installation
 
@@ -22,20 +49,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use MatrixSpiralizer, simply create a new instance, pass your desired input
+and then fire the `#read` method on that instance.
+
+```ruby
+brilliant_input = [
+ ['A', 'B', 'C', 'D'],
+ ['E', 'F', 'G', 'H'],
+ ['I', 'J', 'K', 'L'],
+ ['M', 'N', 'O', 'P'],
+]
+
+spiralizer = MatrixSpiralizer.new(brilliant_input)
+results = spiralizer.read
+# => "a b c d h l p o n m i e f g k j"
+```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/matrix_spiralizer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
