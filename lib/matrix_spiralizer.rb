@@ -1,7 +1,12 @@
 class MatrixSpiralizer
-  def self.read(matrix)
-    results = []
+  attr_accessor :matrix, :results
 
+  def initialize(matrix)
+    self.matrix = matrix
+    self.results = []
+  end
+
+  def read
     # just get the first array of arrays
     top_row_handler = -> { matrix.shift }
     # pull off the last records for each row
