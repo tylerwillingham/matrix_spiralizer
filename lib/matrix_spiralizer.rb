@@ -1,4 +1,8 @@
 class MatrixSpiralizer
+  class InvalidInputError < StandardError; end
+
+  VALID_CHARACTER_REGEX = /[A-Z]/
+
   attr_accessor :matrix, :results
 
   def initialize(matrix)
@@ -12,7 +16,17 @@ class MatrixSpiralizer
     results.join(' ').downcase
   end
 
+  def validate_matrix
+    validate_characters
+  end
+
   private
+
+  def validate_characters
+    return true if matrix.flatten.all? { |char| char =~ VALID_CHARACTER_REGEX }
+
+    raise InvalidInputError, 'The matrix input can only contain uppercase letters'
+  end
 
   def handler_cycle
     @_handler_cycle ||= ordered_handlers.cycle
