@@ -69,7 +69,7 @@ results = spiralizer.read
 
 ### Invalid Inputs
 
-The `#read` method will throw one of two exceptions if your data is invalid.
+The `#read` method will throw one of the following exceptions if your data is invalid.
 
 #### MatrixSpiralizer::InvalidInputError
 
@@ -87,6 +87,18 @@ a different length than its predecessor.
   ['A', 'Z', 'R'],
   ['F', 'K', 'L', 'M'],
   ['A', 'Z', 'N']
+]
+```
+
+#### MatrixSpiralizer::ProhibitedArrayDepth
+
+This error is used when your input consists of more than 1 layer of array nesting. For example, the following is invalid:
+
+```ruby
+[
+  ['A', 'B', 'C'],
+  ['D', ['E'], 'F'],
+  ['H', 'I', 'J']
 ]
 ```
 

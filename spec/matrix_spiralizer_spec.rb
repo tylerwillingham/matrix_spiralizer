@@ -32,6 +32,20 @@ describe MatrixSpiralizer do
   describe '#validate_matrix' do
     subject { spiralizer.validate_matrix }
 
+    context 'when nesting arrays more than 2-levels deep' do
+      let(:spiralizer) do
+        MatrixSpiralizer.new([
+          %w(A B C),
+          ['D', ['E'], 'F'],
+          %w(H I J)
+        ])
+      end
+
+      it 'raises an exception' do
+        expect { subject }.to raise_error(MatrixSpiralizer::ProhibitedArrayDepth)
+      end
+    end
+
     context 'given an input with varying inner-array lengths' do
       let(:spiralizer) do
         MatrixSpiralizer.new([

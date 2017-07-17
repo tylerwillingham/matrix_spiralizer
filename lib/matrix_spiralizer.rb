@@ -1,6 +1,7 @@
 class MatrixSpiralizer
   class InvalidInputError < StandardError; end
   class InconsistentLengthError < StandardError; end
+  class ProhibitedArrayDepth < StandardError; end
 
   VALID_CHARACTER_REGEX = /[A-Z]/
 
@@ -21,10 +22,17 @@ class MatrixSpiralizer
 
   def validate_matrix
     validate_length_consistency
+    validate_array_depth
     validate_characters
   end
 
   private
+
+  def validate_array_depth
+    return true unless matrix.flatten(1).any? { |val| val.is_a?(Array) }
+
+    raise ProhibitedArrayDepth, 'You may not nest arrays more than a single layer.'
+  end
 
   def validate_length_consistency
     first_row_length = matrix.first.size
