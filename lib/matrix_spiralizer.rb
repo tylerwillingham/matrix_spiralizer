@@ -7,14 +7,25 @@ class MatrixSpiralizer
   end
 
   def read
-    ordered_handlers = [top_row_handler, right_column_handler, bottom_row_handler, left_column_handler].cycle
-
-    results.concat ordered_handlers.next.call until matrix.empty?
+    results.concat handler_cycle.next.call until matrix.empty?
 
     results.join(' ').downcase
   end
 
   private
+
+  def handler_cycle
+    @_handler_cycle ||= ordered_handlers.cycle
+  end
+
+  def ordered_handlers
+    [
+      top_row_handler,
+      right_column_handler,
+      bottom_row_handler,
+      left_column_handler
+    ]
+  end
 
   # just get the first array of arrays
   def top_row_handler
