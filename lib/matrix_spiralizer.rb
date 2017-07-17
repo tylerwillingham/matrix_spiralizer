@@ -52,7 +52,7 @@ class MatrixSpiralizer
     ]
   end
 
-  # just get the first array of arrays
+  # fetch the first inner array
   def top_row_handler
     -> { matrix.shift }
   end
@@ -67,7 +67,7 @@ class MatrixSpiralizer
     -> { matrix.pop.reverse }
   end
 
-  # pull off the left col vals & retrun them bottom-up
+  # pull off the left col vals & return them bottom-up
   def left_column_handler
     -> { matrix.map(&:shift).reverse }
   end
