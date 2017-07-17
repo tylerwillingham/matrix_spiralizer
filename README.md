@@ -1,5 +1,7 @@
 # MatrixSpiralizer
 
+[![Build Status](https://travis-ci.org/tylerwillingham/matrix_spiralizer.svg?branch=master)](https://travis-ci.org/tylerwillingham/matrix_spiralizer)
+
 MatrixSpiralizer takes a matrix (or two-dimensional array) input and returns a
 string determined by spiraling through the contents of the array. The spiral pattern
 reads the top row, the right column, the bottom row (in reverse order) and then the left
